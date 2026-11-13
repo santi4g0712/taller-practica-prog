@@ -477,4 +477,335 @@ System.out.print("El cuadrado de "+ numero +"es: + cuadrado");
                 break;
         }
     }
+    String invertirTexto(String textoOriginal) {
+        String textoInvertido = "";
+
+        for (int i = textoOriginal.length() - 1; i >= 0; i--) {
+            textoInvertido = textoInvertido + textoOriginal.charAt(i);
+        }
+
+        return textoInvertido;
+    }
+
+    void punto25() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un texto largo: ");
+        String texto = scanner.nextLine();
+
+        String resultado = invertirTexto(texto);
+
+        System.out.println("Texto invertido: " + resultado);
+    }
+    void punto26() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un texto largo: ");
+        String texto = scanner.nextLine();
+
+        String resultado = "";
+        boolean convertirMayuscula = true;
+
+        for (int i = 0; i < texto.length(); i++) {
+            char caracter = texto.charAt(i);
+
+            if (caracter == ' ') {
+                convertirMayuscula = true;
+                resultado = resultado + caracter;
+            } else {
+                if (convertirMayuscula) {
+                    resultado = resultado + Character.toUpperCase(caracter);
+                    convertirMayuscula = false;
+                } else {
+                    resultado = resultado + Character.toLowerCase(caracter);
+                }
+            }
+        }
+
+        System.out.println("Texto con la primera letra en mayúscula: " + resultado);
+    }
+    void punto27() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un texto largo: ");
+        String texto = scanner.nextLine();
+
+        String textoLimpio = texto.trim();
+
+        if (textoLimpio.isEmpty()) {
+            System.out.println("El texto está vacío.");
+        } else {
+            String[] palabras = textoLimpio.split("\\s+");
+
+            if (palabras.length < 2) {
+                System.out.println("El texto no tiene suficientes palabras para determinar una penúltima palabra.");
+            } else {
+                String penultimaPalabra = palabras[palabras.length - 2];
+                System.out.println("La penúltima palabra es: " + penultimaPalabra);
+            }
+        }
+    }
+    void punto28() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el primer texto (a buscar): ");
+        String texto1 = scanner.nextLine();
+
+        System.out.print("Ingrese el segundo texto (principal): ");
+        String texto2 = scanner.nextLine();
+
+        boolean contiene = texto2.contains(texto1);
+
+        if (contiene) {
+            System.out.println("El segundo texto SÍ contiene el primer texto.");
+        } else {
+            System.out.println("El segundo texto NO contiene el primer texto.");
+        }
+    }
+    boolean esPalindromo(String palabra) {
+        String original = palabra.toLowerCase();
+        String invertida = "";
+
+        for (int i = original.length() - 1; i >= 0; i--) {
+            invertida = invertida + original.charAt(i);
+        }
+
+        return original.equals(invertida);
+    }
+
+
+    void punto29() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese una palabra: ");
+        String palabra = scanner.nextLine();
+
+        boolean resultado = esPalindromo(palabra);
+
+        if (resultado) {
+            System.out.println("La palabra SÍ es un palíndromo.");
+        } else {
+            System.out.println("La palabra NO es un palíndromo.");
+        }
+    }
+    double calcularAreaPoligonoRegular(double perimetro, double apotema) {
+        double area = (perimetro * apotema) / 2;
+        return area;
+    }
+
+    void punto30() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el perímetro del polígono: ");
+        double perimetro = scanner.nextDouble();
+
+        System.out.print("Ingrese la apotema del polígono: ");
+        double apotema = scanner.nextDouble();
+
+        double areaTotal = calcularAreaPoligonoRegular(perimetro, apotema);
+
+        System.out.println("El área del polígono regular es: " + areaTotal);
+    }
+    //parte 4
+    void punto31() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i);
+        }
+    }
+    void punto32() {
+        int contador = 0;
+        int numero = 1;
+
+        while (contador < 10) {
+            System.out.println(numero);
+            numero = numero + 2;
+            contador++;
+        }
+    }
+    void punto33() {
+        int contador = 0;
+        int numero = 2;
+
+        while (contador < 10) {
+            System.out.println(numero);
+            numero = numero + 2;
+            contador++;
+        }
+    }
+    void punto34() {
+        Scanner scanner = new Scanner(System.in);
+        int numero = -1;
+
+        while (numero <= 0) {
+            System.out.print("Ingrese un número entero positivo: ");
+            if (scanner.hasNextInt()) {
+                numero = scanner.nextInt();
+                if (numero <= 0) {
+                    System.out.println("El número debe ser mayor a cero. Intente de nuevo.");
+                }
+            } else {
+                System.out.println("Valor no permitido. Debe ingresar un número entero.");
+                scanner.next();
+            }
+        }
+
+        System.out.println("El número entero positivo ingresado es: " + numero);
+    }
+    void punto35() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un número decimal positivo: ");
+        int decimal = scanner.nextInt();
+
+        if (decimal == 0) {
+            System.out.println("El número en binario es: 0");
+        } else {
+            String binario = "";
+            int numeroAuxiliar = decimal;
+
+            while (numeroAuxiliar > 0) {
+                int residuo = numeroAuxiliar % 2;
+                binario = residuo + binario;
+                numeroAuxiliar = numeroAuxiliar / 2;
+            }
+
+            System.out.println("El número " + decimal + " en binario es: " + binario);
+        }
+    }
+    void punto36() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un número binario (solo ceros y unos): ");
+        String binario = scanner.nextLine();
+
+        int decimal = 0;
+        int potencia = 0;
+
+        for (int i = binario.length() - 1; i >= 0; i--) {
+            char caracter = binario.charAt(i);
+
+            if (caracter == '1') {
+                decimal = decimal + (int) Math.pow(2, potencia);
+            } else if (caracter != '0') {
+                System.out.println("Advertencia: El carácter '" + caracter + "' no es válido en binario.");
+            }
+
+            potencia++;
+        }
+
+        System.out.println("El número binario " + binario + " en decimal es: " + decimal);
+    }
+    void punto37() {
+        for (int i = 1; i <= 10; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+    void punto38() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el número de filas: ");
+        int filas = scanner.nextInt();
+
+        for (int i = 1; i <= filas; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("@");
+            }
+            System.out.println();
+        }
+    }
+    void punto39() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el número de filas: ");
+        int filas = scanner.nextInt();
+
+        for (int i = 1; i <= filas; i++) {
+            for (int j = 1; j < i; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= (filas - i + 1); k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+    //problema final ._.
+    void punto40() {
+        Scanner scanner = new Scanner(System.in);
+
+        final double CAPACIDAD_MAXIMA = 18000.0;
+        final double PESO_MAXIMO_BULTO = 500.0;
+
+        System.out.print("Ingrese la tasa de cambio actual (valor de 1 dólar en pesos): ");
+        double tasaDolar = scanner.nextDouble();
+
+        int totalBultos = 0;
+        double pesoAcumulado = 0;
+        double pesoMasPesado = 0;
+        double pesoMasLiviano = 0;
+        double ingresoTotalPesos = 0;
+
+        boolean continuarRecepcion = true;
+
+        while (continuarRecepcion) {
+            System.out.print("\nIngrese el peso del bulto en Kg (o digite 0 para finalizar el vuelo): ");
+            double pesoBulto = scanner.nextDouble();
+
+            if (pesoBulto == 0) {
+                continuarRecepcion = false;
+            } else if (pesoBulto < 0) {
+                System.out.println("Error: El peso no puede ser negativo.");
+            } else if (pesoBulto > PESO_MAXIMO_BULTO) {
+                System.out.println("Bulto rechazado: Excede el límite permitido de 500 Kg por bulto.");
+            } else if ((pesoAcumulado + pesoBulto) > CAPACIDAD_MAXIMA) {
+                System.out.println("Bulto rechazado: Excede la capacidad restante del avión (" + (CAPACIDAD_MAXIMA - pesoAcumulado) + " Kg disponibles).");
+            } else {
+                totalBultos++;
+                pesoAcumulado = pesoAcumulado + pesoBulto;
+
+                if (totalBultos == 1) {
+                    pesoMasPesado = pesoBulto;
+                    pesoMasLiviano = pesoBulto;
+                } else {
+                    if (pesoBulto > pesoMasPesado) {
+                        pesoMasPesado = pesoBulto;
+                    }
+                    if (pesoBulto < pesoMasLiviano) {
+                        pesoMasLiviano = pesoBulto;
+                    }
+                }
+
+                double costoBulto = 0;
+                if (pesoBulto > 25 && pesoBulto <= 300) {
+                    costoBulto = pesoBulto * 1500;
+                } else if (pesoBulto > 300 && pesoBulto <= 500) {
+                    costoBulto = pesoBulto * 2500;
+                }
+
+                ingresoTotalPesos = ingresoTotalPesos + costoBulto;
+                System.out.println("Bulto #" + totalBultos + " aceptado. Costo: $" + costoBulto + " COP | Carga actual: " + pesoAcumulado + " / 18000 Kg.");
+            }
+        }
+
+        System.out.println("\n--- RESUMEN DEL VUELO BOEING 747 ---");
+        if (totalBultos > 0) {
+            double pesoPromedio = pesoAcumulado / totalBultos;
+            double ingresoTotalDolares = ingresoTotalPesos / tasaDolar;
+
+            System.out.println("a. Número total de bultos ingresados: " + totalBultos);
+            System.out.println("b. Peso del bulto más pesado: " + pesoMasPesado + " Kg");
+            System.out.println("   Peso del bulto más liviano: " + pesoMasLiviano + " Kg");
+            System.out.println("c. Peso promedio de los bultos: " + String.format("%.2f", pesoPromedio) + " Kg");
+            System.out.println("d. Ingreso total en pesos: $" + String.format("%.2f", ingresoTotalPesos) + " COP");
+            System.out.println("   Ingreso total en dólares: $" + String.format("%.2f", ingresoTotalDolares) + " USD");
+        } else {
+            System.out.println("No se ingresaron bultos válidos para este vuelo.");
+        }
+    }
+
 }
+
+
